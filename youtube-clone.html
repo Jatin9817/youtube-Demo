@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Youtube Clone</title>
+	
+	<style>
+	* {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+     }
+	 
+	body{
+	  box-sizing: border-box;
+    }
+
+	nav{
+	  display: flex;
+	  flex-direction: row;
+	  justify-content: space-between;
+	  border-bottom: 0.5px solid grey;
+	  background-color: white;
+	  position:fixed;
+	  padding-bottom:10px;
+	  top:0;
+	  left:0px;
+	  right:0;
+	  z-index:2;
+	}
+	
+	#search-bar{
+	  justify-self: center;
+      width: 300px;
+      margin-top: 15px;
+	  margin-left:35%;
+      height: 25px;
+      padding: 2px;
+      padding-left:5px;
+	}
+	
+	.log-in-btn{
+	  background-color: #007bff;
+	  height:25px;
+	  width:70px;
+	  margin-top:15px;
+	  margin-left:28%;
+	  padding:2px;
+	  color:white;
+	  border-radius:3px;
+	  border:none;
+	}
+	
+	.logo-pic{
+	  height:30px;
+	  width:30px;
+      margin-left:0%;
+      margin-top:10px;	
+	}
+	
+	#side-bar-section{
+	 margin-left: 0;
+     position: fixed;
+     left: 0%;
+     width: 250px;
+     float: left;
+     height: 100%;
+     overflow-y: auto;
+     z-index: 1;
+	 margin-bottom:20px;
+	}
+	
+	#active-title {
+    background: rgba(188, 195, 204, 0.5);
+	padding-top:7px;
+    }
+	
+	.side-bar{
+	list-style-type:none;
+	width:250px;
+	display:flex;
+    flex-direction:column;
+	margin-left: 0;
+    padding-left: 0;
+	}
+	
+	.dp-pic{
+	height:25px;
+	width:30px;
+	margin-left:10%;
+	}
+	
+	.dp-pic-2{
+	height:25px;
+	width:30px;
+	margin-left:10%;
+	border-radius:50%;
+	}
+	
+	.side-bar-titles{
+	 text-decoration:none;
+	 margin-left:18%;
+	 color:black;
+	 font-size: 15px;
+     position: absolute;
+	 font-size:15px;
+	 color: rgb(99, 95, 94);
+	}
+	
+	li{
+	 margin-bottom:10px;
+	}
+	
+	.side-bar-pg{
+	 margin-left:25px;
+	 font-weight:bold;
+	 color: rgb(99, 95, 94);
+	}
+	
+	#video-section{
+	  display:flex;
+	  flex-direction:row;
+	  flex-wrap:wrap;
+	  justify-content: space-around;
+      margin-left: 255px;
+      margin-top:60px;
+	}
+	
+	.video-container {
+      margin-top: 20px;
+    } 
+	
+	.videos{
+	  weight:300px;
+	  height:175px;
+	  margin-bottom:5px;
+	}
+	
+	.video-descripiton{
+	  display:flex;
+	  flex-direction:row;
+	} 
+	
+	.channel-dp{
+	  width:35px;
+	  height:35px;
+	  margin-top:10px;
+	  border-radius:50%;
+	  justify-self:flex-start;
+	}
+	
+	.video-detail {
+    width: 200px;
+    margin-left: 10px;
+    justify-self: flex-end;
+   }
+	
+	.video-detail-lower{
+	  color:rgb(99, 95 ,94);
+	}
+	
+	#form-container{
+	  display:none;
+	  position:fixed;
+	  z-index:1;
+	  left:0;
+	  right:0;
+	  weidth:100%;
+	  height:100%;
+	  background-color:rgba(0,0,0,0.5);
+	}
+	
+	.loginform{
+	  position:relative;
+	  background-color:white;
+	  border-radius:8px;
+	  width:300px;
+	  padding:20px;
+	  margin:10% auto;
+	  margin-top:20px;
+	}
+	
+	input{
+	  width: 96%;
+	  padding:5px;
+      margin:5px;
+	}
+	.sub-btn{
+	  width: 100%;
+	  padding:5px;
+	  margin:5px;
+	  background-color:#28a745;
+	  color:white;
+	  border:none;
+	  border-radius:3px;
+	}
+	
+	.cnl-btn{
+	  width: 100%;
+	  padding:5px;
+	  margin:5px;
+	  background-color:red;
+	  color:white;
+	  border:none;
+	  border-radius:3px;
+	}
+	</style>
+  </head>
+  
+  <body>
+  <?php 
+	//server connection
+	
+	
+  ?>
+    <nav>
+	  <input type="text" placeholder="Search" id="search-bar"></input>
+	 
+	 <button type="button" onclick="openForm()" class="log-in-btn">Log in</button>
+	  <div id="form-container">
+	    <form class="loginform">
+	      <input type="text" placeholder="First Name"></input>
+	      <input type="text" placeholder="Last Name"></input>
+	      <input type="email" placeholder="@email.com"></input>
+	      <input type="pswd" placeholder="Password"></input>
+		  <button type="button" class="sub-btn">Submit</button>
+		  <button type="button" class="cnl-btn" onclick="closeForm()">Cancel</button>
+	    </form>
+	  </div>
+	 
+	 <img class="logo-pic" src="https://cdn.mos.cms.futurecdn.net/R4DgSdP6erUexko5KuX6UF-1200-80.jpg">
+	</nav>
+	<section id="side-bar-section" >
+	  <div>
+	    <ul class="side-bar">
+		 <li id="active-title">
+		  <img class="dp-pic" src="https://www.shutterstock.com/image-vector/youtube-home-button-icon-vector-260nw-1985951756.jpg">
+		  <a class="side-bar-titles" href="#">Home</a>
+		 </li>
+		 
+		 <li>
+		  <img class="dp-pic" src="https://thumbs.dreamstime.com/b/youtube-explore-button-icon-vector-trendy-style-youtube-explore-button-icon-vector-trendy-style-icon-221213485.jpg">
+		  <a class="side-bar-titles" href="#">Explore</a>
+		 </li>
+		 
+		 <li>
+          <img class="dp-pic" src="https://www.shutterstock.com/image-vector/youtube-subscriptions-button-icon-vector-260nw-1990703633.jpg">
+		  <a class="side-bar-titles" href="#">Subscriptions</a>
+		 </li>
+		 
+		 <li>
+   		   <img class="dp-pic" src="https://thumbs.dreamstime.com/b/youtube-library-menu-button-icon-vector-recent-symbol-illustration-220538950.jpg">
+		   <a class="side-bar-titles" href="#"> Library</a>
+		 </li>
+		 
+         <li>		 
+		  <img class="dp-pic" src="https://www.shutterstock.com/image-vector/history-icon-vector-design-260nw-751811908.jpg">
+		  <a class="side-bar-titles" href="#">History</a>
+		 </li>
+		 
+         <li>		 
+		  <img class="dp-pic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1280px-YouTube_full-color_icon_%282017%29.svg.png">
+		  <a class="side-bar-titles" href="#">Your videos</a>
+		 </li>
+		 
+		 <li>
+		  <img class="dp-pic" src="https://www.shutterstock.com/image-vector/watch-later-icon-clock-vector-260nw-769784434.jpg">
+		  <a class="side-bar-titles" href="#">Watch later</a>		 
+		 </li>
+		 
+		 <li>		  
+		  <div class="dp-container-1">
+		  <img class="dp-pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7sZw08kqkGDBqgi2wYfoyLnUpiSrBLo_WXg&s">
+		  <a class="side-bar-titles" href="#">Liked videos</a>
+		  </div>
+		 </li>
+		</ul>
+	  </div>
+	  
+	  <div>
+	    <p class="side-bar-pg">SUBSCRIPTIONS</p>
+	    <ul class="side-bar">	
+         <li>		
+		  <img class="dp-pic-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX9RLXvRdguDI0VF9d6Tk90XEiRnOD-kTb5w&s">
+		  <a class="side-bar-titles" href="#"> Ania Plamer </a>
+		 </li>
+		 
+		 <li>
+		  <img class="dp-pic-2" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229151313/dm9.webp">
+		  <a class="side-bar-titles" href="#">The Puzzle World</a>
+         </li>
+		 
+		 <li>
+		  <img class="dp-pic-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdlW6LXPK8sEEs8xOCkLAQocqXZWBOUB3Urg&s">
+		  <a class="side-bar-titles" href="#">Sports Daily</a>
+         </li>
+		 
+		 <li>
+		  <img class="dp-pic-2" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150906/dm5.jpeg">
+		  <a class="side-bar-titles" href="#">Rick Sorkin</a>
+		 </li>
+		 
+         <li>
+		  <img class="dp-pic-2" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150325/dm1.jpeg">
+		  <a class="side-bar-titles" href="#">Android Daily</a>
+		 </li>
+		 
+		 <li>
+		  <img class="dp-pic-2" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150542/dm2.webp">
+		  <a class="side-bar-titles" href="#">Mike Miller</a>
+		 </li>
+		 
+		 <li>
+		  <img class="dp-pic-2" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150700/dm4.webp">
+		  <a class="side-bar-titles" href="#">Best Tips</a>
+		 </li>
+		</ul>
+	  </div>
+	  
+	  <div>
+	    <p class="side-bar-pg">MORE FROM YOUTUBE</p>
+		<ul class="side-bar"> 
+		 <li>
+		  <img class="dp-pic" src="https://thumbs.dreamstime.com/b/youtube-premium-logo-youtube-video-sharing-website-youtube-premium-icon-eps-youtube-premium-logo-youtube-video-sharing-258429173.jpg">
+		  <a class="side-bar-titles" href="#">YouTube Premium</a>
+		 </li>
+		  
+		 <li>
+		  <img class="dp-pic" src="https://cdn.pixabay.com/photo/2015/01/05/17/19/filmstrip-589491_1280.jpg">
+		  <a class="side-bar-titles" href="#">Films</a>
+		 </li>
+		  
+		 <li>
+		  <img class="dp-pic" src="https://img.freepik.com/free-vector/eye-catching-electronic-remote-controller-background-with-text-space_1017-54739.jpg?semt=ais_user_personalization&w=740&q=80">
+		  <a class="side-bar-titles" href="#">Gaming</a>
+		 </li>
+		  
+		 <li>
+		  <img class="dp-pic" src="https://t4.ftcdn.net/jpg/05/26/96/57/360_F_526965740_FaoRMwjPGJhxjLGNEw1cxe26jWUaQsxx.jpg">
+		  <a class="side-bar-titles" href="#">Live</a>
+	     </li>
+		  
+		 <li>
+		  <img class="dp-pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaxNxAYDYIFaK85Zz70nCUpH0FiLsMCTYFlw&s">
+		  <a class="side-bar-titles" href="#">Learning</a>
+	     </li>
+	  
+		 <li>
+		  <img class="dp-pic" src="https://static.vecteezy.com/system/resources/previews/025/638/246/non_2x/simple-film-icon-the-icon-can-be-used-for-websites-print-templates-presentation-templates-illustrations-etc-free-vector.jpg">
+		  <a class="side-bar-titles" href="#">Report</a>
+		 </li>
+		  
+		 <li>
+		  <img class="dp-pic" src="https://static.vecteezy.com/system/resources/thumbnails/066/414/281/small_2x/clapperboard-icon-film-video.jpg">
+		  <a class="side-bar-titles" href="#">Send feedback</a>
+		 </li>
+	  </div>
+	</section>
+	
+	<main id="video-section">
+	  <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229144731/d1.webp">
+	      <div class="video-descripiton">
+			<img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150325/dm1.jpeg">
+			<div class="video-detail">
+			  <p class="video-detail-upper"><b>Top 5 Android Features</b></p>
+		      <p class="video-detail-lower">Android Daily<br>
+				                           2M views 1 week ago</p>
+			</div>
+		  </div>
+	  </div>
+	  
+	  <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229145100/d2.webp">
+		  <div class="video-descripiton">
+		    <img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150542/dm2.webp">
+			<div class="video-detail">
+			  <p class="video-detail-upper"><b>The 10 Best Shows of 2021!</b></p>
+			  <p class="video-detail-lower">Mike miller<br>
+			                               1K views 2 months ago</p>
+			</div>
+		  </div>
+	  </div>
+	  
+	  <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229145216/d3.jpeg">
+		  <div class="video-descripiton">
+		    <img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150325/dm1.jpeg">
+			<div class="video-detail">
+			  <p class="video-detail-upper"><b>5 New Features of YouTube</b></p>
+			  <p class="video-detail-lower">Android daily<br>
+			                               2.7K views 5 days ago</p>
+            </div>		  
+		  </div>
+	  </div>
+	  
+	  <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229145328/d4.webp">
+		  <div class="video-descripiton">
+		    <img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150700/dm4.webp">
+			<div class="video-detail">
+			<p><b>How To Improve Your Youtube Recommendations</b></p>
+			<p class="video-detail-lower">Best Tips<br>
+			                             3K views 3 days ago</p>
+			</div>
+		  </div>
+	  </div>
+	  
+	  <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229145420/d5.jpeg">
+	     <div class="video-descripiton">
+		   <img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150906/dm5.jpeg">
+		   <div class="video-detail">
+		     <p><b>Rick Sorkin - Your Eyes (Offical Video)</b></p>
+			 <p class="video-detail-lower">Rick Sorkin<br>
+			                              5M views 1 year ago</p>
+		   </div>
+		 </div>
+	  </div>
+	  
+	 <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229145459/d6.webp">
+	      <div class="video-descripiton">
+			<img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229151052/dm6.webp">
+			<div class="video-detail">
+			  <p class="video-detail-upper"><b>15 Photography Tips For Beginners</b></p>
+		      <p class="video-detail-lower">Photography World<br>
+				                           506 views 5 weeks ago</p>
+			</div>
+		  </div>
+	  </div>
+	  
+	  <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229145543/d7.jpeg">
+	      <div class="video-descripiton">
+			<img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229151133/dm7.webp">
+			<div class="video-detail">
+			  <p class="video-detail-upper"><b>David Scott - Another Year (offical Lyric Video)</b></p>
+		      <p class="video-detail-lower">Android Daily<br>
+				                           500K views 1 month ago</p>
+			</div>
+		  </div>
+	  </div>
+	  
+	  <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229145716/d8.jpeg">
+	      <div class="video-descripiton">
+			<img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229151222/dm8.jpeg">
+			<div class="video-detail">
+			  <p class="video-detail-upper"><b>5 Pouplar Sports Right now</b></p>
+		      <p class="video-detail-lower">Sports Daily<br>
+				                           2K views 5 weeks ago</p>
+			</div>
+		  </div>
+	  </div>
+	  
+	  <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229145824/d9.webp">
+	      <div class="video-descripiton">
+			<img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229151313/dm9.webp">
+			<div class="video-detail">
+			  <p class="video-detail-upper"><b>Puzzles - Offical Trailer(HD)</b></p>
+		      <p class="video-detail-lower">The Puzzle World<br>
+				                           2m views 2 months ago</p>
+			</div>
+		  </div>
+	  </div>
+	  
+	  <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229145921/d10.jpeg">
+	      <div class="video-descripiton">
+			<img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229151402/dm10.webp">
+			<div class="video-detail">
+			  <p class="video-detail-upper"><b>Ania Palmer - Changes (Official Video)</b></p>
+		      <p class="video-detail-lower">Ania Palmer<br>
+				                           1M views 5 months ago</p>
+			</div>
+		  </div>
+	  </div>
+	  
+	  <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150018/d11.jpeg">
+	      <div class="video-descripiton">
+			<img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229151436/dm11.jpeg">
+			<div class="video-detail">
+			  <p class="video-detail-upper"><b>Rachel Spectre - Footsteps (Official Video)</b></p>
+		      <p class="video-detail-lower">Rachel Spectre<br>
+				                           2M views 11 months ago</p>
+			</div>
+		  </div>
+	  </div>
+	  
+	  <div class="video-container">
+	    <img class="videos" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150111/d12.webp">
+	      <div class="video-descripiton">
+			<img class="channel-dp" src="https://media.geeksforgeeks.org/wp-content/uploads/20231229150325/dm1.jpeg">
+			<div class="video-detail">
+			  <p class="video-detail-upper"><b>Top 5 Android 11 Features</b></p>
+		      <p class="video-detail-lower">Android Daily<br>
+				                           3M views 1 year ago</p>
+			</div>
+		  </div>
+	  </div>
+	  <footer>
+	    <b>This project is a cloned work and a recreation of Youtube design</b>
+	  </footer>
+	</main>
+	
+  <script>
+	function openForm(){
+	  document.getElementById("form-container").style.display="block";
+	}
+	
+	function closeForm(){
+	  document.getElementById("form-container").style.display="none";
+	}
+  </script>
+  </body>
+</html>
